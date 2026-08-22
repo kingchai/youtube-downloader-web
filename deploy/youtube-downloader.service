@@ -1,0 +1,20 @@
+[Unit]
+Description=YouTube Downloader Web Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/youtube-downloader-web
+ExecStart=/opt/youtube-downloader-web/.venv/bin/python /opt/youtube-downloader-web/server.py
+Environment=PORT=18081
+Environment="PATH=/opt/youtube-downloader-web/bin:/opt/youtube-downloader-web/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/opt/youtube-downloader-web
+
+[Install]
+WantedBy=multi-user.target
