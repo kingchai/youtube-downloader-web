@@ -8,6 +8,7 @@ Type=simple
 WorkingDirectory=/opt/youtube-downloader-web
 ExecStart=/opt/youtube-downloader-web/.venv/bin/python /opt/youtube-downloader-web/server.py
 Environment=PORT=18081
+Environment=HOST=127.0.0.1
 Environment="PATH=/opt/youtube-downloader-web/bin:/opt/youtube-downloader-web/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
 Restart=on-failure
 RestartSec=5
