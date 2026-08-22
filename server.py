@@ -16,6 +16,7 @@ from urllib.parse import quote, urlparse
 
 
 ROOT = Path(__file__).resolve().parent
+HOST = os.environ.get("HOST", "127.0.0.1")
 PORT = int(os.environ.get("PORT", "8080"))
 MAX_BODY = 16 * 1024
 TIMEOUT = int(os.environ.get("YTDLP_TIMEOUT_SECONDS", "1800"))
@@ -136,5 +137,5 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    print(f"Serving {ROOT} on http://0.0.0.0:{PORT}", flush=True)
-    ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
+    print(f"Serving {ROOT} on http://{HOST}:{PORT}", flush=True)
+    ThreadingHTTPServer((HOST, PORT), Handler).serve_forever()
